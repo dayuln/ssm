@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ln.dao.dwglMapper" >
+  <resultMap id="BaseResultMap" type="com.ln.model.dwgl" >
+    <id column="BH" property="bh" jdbcType="INTEGER" />
+    <result column="DWMC" property="dwmc" jdbcType="VARCHAR" />
+    <result column="SJDW" property="sjdw" jdbcType="INTEGER" />
+    <result column="WZH" property="wzh" jdbcType="INTEGER" />
+    <result column="Lft" property="lft" jdbcType="INTEGER" />
+    <result column="Rgt" property="rgt" jdbcType="INTEGER" />
+    <result column="SCBZ" property="scbz" jdbcType="TINYINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BH, DWMC, SJDW, WZH, Lft, Rgt, SCBZ
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dwgl
+    where BH = #{bh,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dwgl
+    where BH = #{bh,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ln.model.dwgl" >
+    insert into dwgl (BH, DWMC, SJDW, 
+      WZH, Lft, Rgt, SCBZ
+      )
+    values (#{bh,jdbcType=INTEGER}, #{dwmc,jdbcType=VARCHAR}, #{sjdw,jdbcType=INTEGER}, 
+      #{wzh,jdbcType=INTEGER}, #{lft,jdbcType=INTEGER}, #{rgt,jdbcType=INTEGER}, #{scbz,jdbcType=TINYINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ln.model.dwgl" >
+    insert into dwgl
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bh != null" >
+        BH,
+      </if>
+      <if test="dwmc != null" >
+        DWMC,
+      </if>
+      <if test="sjdw != null" >
+        SJDW,
+      </if>
+      <if test="wzh != null" >
+        WZH,
+      </if>
+      <if test="lft != null" >
+        Lft,
+      </if>
+      <if test="rgt != null" >
+        Rgt,
+      </if>
+      <if test="scbz != null" >
+        SCBZ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bh != null" >
+        #{bh,jdbcType=INTEGER},
+      </if>
+      <if test="dwmc != null" >
+        #{dwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sjdw != null" >
+        #{sjdw,jdbcType=INTEGER},
+      </if>
+      <if test="wzh != null" >
+        #{wzh,jdbcType=INTEGER},
+      </if>
+      <if test="lft != null" >
+        #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null" >
+        #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="scbz != null" >
+        #{scbz,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ln.model.dwgl" >
+    update dwgl
+    <set >
+      <if test="dwmc != null" >
+        DWMC = #{dwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sjdw != null" >
+        SJDW = #{sjdw,jdbcType=INTEGER},
+      </if>
+      <if test="wzh != null" >
+        WZH = #{wzh,jdbcType=INTEGER},
+      </if>
+      <if test="lft != null" >
+        Lft = #{lft,jdbcType=INTEGER},
+      </if>
+      <if test="rgt != null" >
+        Rgt = #{rgt,jdbcType=INTEGER},
+      </if>
+      <if test="scbz != null" >
+        SCBZ = #{scbz,jdbcType=TINYINT},
+      </if>
+    </set>
+    where BH = #{bh,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ln.model.dwgl" >
+    update dwgl
+    set DWMC = #{dwmc,jdbcType=VARCHAR},
+      SJDW = #{sjdw,jdbcType=INTEGER},
+      WZH = #{wzh,jdbcType=INTEGER},
+      Lft = #{lft,jdbcType=INTEGER},
+      Rgt = #{rgt,jdbcType=INTEGER},
+      SCBZ = #{scbz,jdbcType=TINYINT}
+    where BH = #{bh,jdbcType=INTEGER}
+  </update>
+</mapper>
